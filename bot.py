@@ -13,7 +13,8 @@ MIN_ORDER_VALUE = 30
 MAXIMUM_INTERVAL = 5
 MINIMUM_INTERVAL = 2
 TIME_RANGE = (MINIMUM_INTERVAL, MAXIMUM_INTERVAL)  
-ORDER_PERCENTAGE = (50, 80)  
+ORDER_PERCENTAGE = (50, 80)
+TEST = True
 
 def get_order_book(symbol):
     """Fetch the order book for a given token."""
@@ -25,7 +26,9 @@ def get_order_book(symbol):
 
 def place_sell_order(symbol, price, quantity):
     """Place a limit sell order."""
-    return client.new_order(symbol=symbol, side="SELL", order_type="LIMIT", options={quantity: quantity, price: price})
+    if TEST:
+        return client.new_order_test(symbol=symbol, side="SELL", order_type="LIMIT", options={"quantity": quantity, "price": price})
+    return client.new_order(symbol=symbol, side="SELL", order_type="LIMIT", options={"quantity": quantity, "price": price})
 
 
 def execute_trade():
