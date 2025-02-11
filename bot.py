@@ -17,7 +17,11 @@ ORDER_PERCENTAGE = (50, 80)
 
 def get_order_book(symbol):
     """Fetch the order book for a given token."""
-    return client.trades(symbol=symbol )
+    orderbook = client.depth(symbol=symbol )
+    return [{
+        "price": float(bid[0]),
+        "qty": float(bid[1])
+    } for bid in orderbook['bids']]
 
 def place_sell_order(symbol, price, quantity):
     """Place a limit sell order."""
