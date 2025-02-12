@@ -27,7 +27,7 @@ def get_order_book(symbol):
 def place_sell_order(symbol, price, quantity):
     """Place a limit sell order."""
     if TEST:
-        return client.new_order_test(symbol=symbol, side="SELL", order_type="LIMIT", options={"quantity": quantity, "price": price})
+        return client.new_order_test(symbol=symbol, side="SELL", order_type="LIMIT", options={"quantity": 'quantity', "price": '1000000'})
     return client.new_order(symbol=symbol, side="SELL", order_type="LIMIT", options={"quantity": quantity, "price": price})
 
 
