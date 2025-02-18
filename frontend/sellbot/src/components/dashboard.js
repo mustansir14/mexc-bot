@@ -50,7 +50,7 @@ const Dashboard = () => {
           setLoading(false); // Reset loading state
         });
     }
-  }, []);
+  }, [setData]);
   
       
 
