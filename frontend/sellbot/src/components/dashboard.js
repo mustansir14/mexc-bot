@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { useNavigate} from "react-router-dom"; // Import useLocation
+import { useNavigate} from "react-router-dom"; 
 import Sidebar from "./sidebar";
 import { DataContext } from "./context";
 import "../Styles/model.css"

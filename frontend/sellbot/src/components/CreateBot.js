@@ -6,8 +6,7 @@ import "../Styles/model.css"
 const CreateBot = () => {
   const [navOpen, setNavOpen] = useState(true);
   const [connected, setConnected] = useState(false);
-  const { data } = useContext(DataContext);  // Get data from context
-  // const tradingPairData = data.trading_pairs || [];  
+  const { data } = useContext(DataContext);  
   const [tradingPair, setTradingPair] = useState("");
   const [minOrderValue, setMinOrderValue] = useState("");
   const [minInterval, setMinInterval] = useState("");
@@ -30,10 +29,10 @@ const CreateBot = () => {
 
   useEffect(() => {
     if (data && data.trading_pairs) {
-      setLoading(false); // Stop loading when tradingPairData is available
+      setLoading(false); 
     }
-    console.log("Trading Pair Data:", data); // For debugging
-  }, [data]); // Runs when tradingPairData changes
+    console.log("Trading Pair Data:", data); 
+  }, [data]); 
 
   const addBot = () => {
     if (!tradingPair) {

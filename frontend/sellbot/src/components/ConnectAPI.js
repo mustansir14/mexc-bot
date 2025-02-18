@@ -8,7 +8,7 @@ const ConnectAPI = () => {
   const [apiKey, setApiKey] = useState("");
   const [apiSecret, setApiSecret] = useState("");
   const [navOpen, setNavOpen] = useState(true);
-  const [isConnecting, setIsConnecting] = useState(false); // New state for button loading
+  const [isConnecting, setIsConnecting] = useState(false); 
   const { setData } = useContext(DataContext);
   const navigate = useNavigate();
 
