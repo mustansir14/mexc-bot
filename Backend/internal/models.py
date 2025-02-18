@@ -1,5 +1,5 @@
 from sqlalchemy import  Column, Integer, String, Float, Boolean
-from internal.database import Base
+from internal.database import Base, engine
 
 # Bot Model (SQLAlchemy)
 class Bot(Base):
@@ -13,3 +13,6 @@ class Bot(Base):
     order_percentage_min = Column(Float)
     order_percentage_max = Column(Float)
     is_active = Column(Boolean, default=False)
+
+
+Base.metadata.create_all(bind=engine)
