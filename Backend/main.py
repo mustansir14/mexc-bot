@@ -5,8 +5,10 @@ from sqlalchemy.orm import Session
 from internal.models import Bot
 from internal.schemas import APIConnectRequest, BotCreate
 from internal.trade_executor import executor
+from fastapi.middleware.cors import CORSMiddleware
 from internal.dependencies import get_db
 
+# Allow frontend requests from http://localhost:3000
 
 
 
@@ -19,6 +21,15 @@ logging.basicConfig(
 # FastAPI App
 app = FastAPI()
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000"],  # React frontend
+    allow_credentials=True,
+    allow_methods=["*"],  # Allow all methods (GET, POST, etc.)
+    allow_headers=["*"],  # Allow all headers
+)
+
+
 @app.on_event("startup")
 async def startup_event():
     db = next(get_db())
@@ -30,8 +41,9 @@ async def startup_event():
 @app.post("/connect")
 def connect_to_api(request: APIConnectRequest):
     try:
-        balance = executor.connect(request.api_key, request.api_secret)
-        return {"message": "Connected to MEXC API", "balances": balance["balances"]}
+        balance, symbols = executor.connect(request.api_key, request.api_secret)
+        trading_pairs = [pair['symbol'] for pair in symbols["symbols"]]
+        return {"message": "Connected to MEXC API", "balances": balance["balances"], "trading_pairs" : trading_pairs}
     except Exception as e:
         raise HTTPException(status_code=400, detail=f"Failed to connect: {str(e)}")
 
@@ -61,6 +73,7 @@ def add_bot(bot_data: BotCreate, db: Session = Depends(get_db)):
 @app.get("/bots")
 def get_bots(db: Session = Depends(get_db)):
     return db.query(Bot).all()
+
 
 # Delete a Bot
 @app.delete("/bots/{bot_id}")

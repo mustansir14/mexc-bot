@@ -1,0 +1,228 @@
+/* Base Styles */
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f4f4f9;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+h2, h3 {
+  font-weight: bold;
+  color: #333;
+}
+
+button {
+  cursor: pointer;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 220px;
+  background-color: #222;
+  color: #fff;
+  position: fixed;
+  height: 100%;
+  top: 0;
+  left: -290px;
+  transition: left 0.3s ease;
+}
+
+.sidebar.open {
+  left: 0;
+}
+
+.sidebar a {
+  color: #fff;
+  text-decoration: none;
+  padding: 15px 20px;
+  display: block;
+  font-size: 16px;
+  border-bottom: 1px solid #444;
+}
+
+.sidebar a:hover {
+  background-color: #444;
+}
+
+/* Containers */
+.createbot-container, .bots-container, .dashboard-container {
+  display: flex;
+  height: 100vh;
+}
+
+.createbot-box, .bots-box, .dashboard-box {
+  margin-left: 280px;
+  width: 100%;
+  padding: 30px;
+}
+
+.menu-button {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #333;
+  margin: 20px;
+}
+
+/* Input Fields */
+.input {
+  width: 80%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  background-color: #fff;
+  transition: border-color 0.3s ease;
+}
+
+.input:focus {
+  border-color: #007bff;
+}
+
+.select {
+  width: 80%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  font-size: 14px;
+  transition: border-color 0.3s ease;
+}
+
+.select:focus {
+  border-color: #007bff;
+}
+
+/* Button Styles */
+.button {
+  background-color: #28a745;
+  color: white;
+  font-size: 16px;
+}
+
+.button:hover {
+  background-color: #218838;
+}
+
+.run-btn {
+  background-color: #007bff;
+  color: white;
+  margin-right: 10px;
+}
+
+.run-btn:hover {
+  background-color: #0056b3;
+}
+
+.stop-btn {
+  background-color: #007bff;
+  color: white;
+  margin-right: 10px;
+}
+
+.stop-btn:hover {
+  background-color: #0056b3;
+}
+
+.delete-btn {
+  background-color: #007bff;
+  color: white;
+  margin-right: 10px;
+}
+
+.delete-btn:hover {
+  background-color: #0056b3;
+}
+
+.disconnect {
+  background-color: #007bff;
+  color: white;
+  margin: 20px auto;
+  width: 15%;
+  display: block;
+}
+
+.disconnect:hover {
+  background-color: #0056b3;
+}
+
+/* Tables */
+.bots-table, .balance-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.bots-table th, .balance-table th {
+  padding: 12px;
+  text-align: left;
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+.bots-table td, .balance-table td {
+  padding: 12px;
+  text-align: left;
+  background-color: #fff;
+}
+
+.bots-table tr:nth-child(even), .balance-table tr:nth-child(even) {
+  background-color: #f1f1f1;
+}
+
+.bots-table th, .balance-table th {
+  border-bottom: 1px solid #ccc;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+/* Success & Loading Messages */
+.success-message {
+  color: #28a745;
+  font-weight: bold;
+}
+
+.title {
+  font-size: 24px;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+h2.title {
+  margin-bottom: 40px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .createbot-box, .bots-box, .dashboard-box {
+    margin-left: 0;
+  }
+
+  .menu-button {
+    margin: 15px;
+  }
+
+  .sidebar {
+    width: 200px;
+  }
+
+  .sidebar.open {
+    left: 0;
+  }
+
+  .input {
+    width: 80%;
+  }
+
+  .button {
+    width: 80%;
+  }
+}

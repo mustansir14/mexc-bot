@@ -6,7 +6,7 @@ class Bot(Base):
     __tablename__ = "bots"
     
     id = Column(Integer, primary_key=True, index=True)
-    trading_pair = Column(String, index=True)
+    trading_pair = Column(String)
     min_order_value = Column(Float)
     min_interval = Column(Integer)
     max_interval = Column(Integer)

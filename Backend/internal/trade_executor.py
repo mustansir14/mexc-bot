@@ -19,7 +19,8 @@ class TradeExecutor:
     
     def connect(self,api_key, api_secret):
         self.client = Spot(api_key=api_key, api_secret=api_secret)
-        return self.client.account_info()
+        return self.client.account_info(), self.client.exchange_info()
+    
     
     def disconnect(self):
         self.client = None

@@ -1,0 +1,157 @@
+/* Sidebar container */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -290px; /* Initially hidden */
+  width: 250px;
+  height: 100vh;
+  background: #222;
+  color: white;
+  transition: left 0.3s ease-in-out;
+  padding-top: 20px;
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 1001;
+}
+
+.sidebar.open {
+  left: 0; /* Fully visible when opened */
+}
+
+/* Sidebar header (Logo and text) */
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  justify-content: flex-start;
+}
+
+.logo-image {
+  width: 40px; /* Adjust the size of the logo */
+  height: 40px;
+  margin-right: 10px;
+}
+
+.heading-text {
+  font-size: 24px;
+  font-weight: bold;
+  color: white;
+  margin-top: 30px;
+}
+
+/* Close button */
+.close-button {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+}
+
+/* Sidebar menu items */
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 40px;
+}
+
+.sidebar ul li {
+  padding: 15px 20px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.sidebar ul li:hover {
+  background: #444;
+}
+
+/* Overlay effect for closing the sidebar */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+.overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Menu button to open sidebar */
+.menu-button {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: #222;
+  z-index: 1100;
+}
+
+/* Hide menu button when the sidebar is open */
+.menu-button.hidden {
+  display: none !important;
+}
+
+/* Responsive styles for smaller devices */
+@media (max-width: 768px) {
+  /* Adjust the width of the sidebar for mobile */
+  .sidebar {
+    width: 200px;
+  }
+
+  /* Move the menu button closer to the edge */
+  .menu-button {
+    top: 10px;
+    left: 10px;
+  }
+
+  /* Close button */
+  .close-button {
+    font-size: 20px;
+    right: 10px;
+    top: 8px;
+  }
+
+  /* Make sidebar content more compact */
+  .sidebar ul li {
+    padding: 12px 15px;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Further reduce sidebar width on smaller screens */
+  .sidebar {
+    width: 180px;
+  }
+
+  /* Menu button size for very small devices */
+  .menu-button {
+    font-size: 20px;
+  }
+
+  /* Adjust close button for very small screens */
+  .close-button {
+    font-size: 18px;
+    right: 8px;
+    top: 6px;
+  }
+
+  /* Adjust menu items for very small screens */
+  .sidebar ul li {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+}
