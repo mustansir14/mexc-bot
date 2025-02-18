@@ -11,19 +11,47 @@ const Dashboard = () => {
   const [navOpen, setNavOpen] = useState(true);
   const navigate = useNavigate();
 
- useEffect(() => {
-     const apiKey = localStorage.getItem("apiKey");
-     const apiSecret = localStorage.getItem("apiSecret");
-
- 
-     if (!apiKey || !apiSecret) {
-       setConnected(false);
-       setLoading(false);
-       }
-     else {
-       setLoading(false);
-       setConnected(true)
-     }}, [])
+  useEffect(() => {
+    const apiKey = localStorage.getItem("apiKey");
+    const apiSecret = localStorage.getItem("apiSecret");
+  
+    if (!apiKey || !apiSecret) {
+      setConnected(false);
+      setLoading(false);
+      console.log("Connect to API");
+    } else {
+      setLoading(true); // Indicate loading while fetching
+  
+      fetch("http://localhost:8000/connect", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ api_key: apiKey, api_secret: apiSecret }),
+      })
+        .then(res => {
+          if (!res.ok) {
+            throw new Error("The provided details are incorrect.");
+          }
+          return res.json();
+        })
+        .then(data => {
+          if (data.balances) {
+            setData(data); // Set data only
+            setConnected(true);
+          } else {
+            throw new Error("Invalid API credentials.");
+          }
+        })
+        .catch(err => {
+          console.error("API connection error:", err);
+          alert(err.message || "Failed to connect to API.");
+          setConnected(false);
+        })
+        .finally(() => {
+          setLoading(false); // Reset loading state
+        });
+    }
+  }, []);
+  
       
 
   const handleDisconnect = () => {
