@@ -4,7 +4,7 @@ import logging
 import time, random
 from mexc_sdk import Spot
 
-TEST = True
+TEST = False
 
 
 class TradeExecutor:
