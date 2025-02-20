@@ -4,7 +4,6 @@ import Sidebar from "./components/sidebar";
 import Dashboard from "./components/dashboard";
 import CreateBot from "./components/CreateBot";
 import ConnectAPI from "./components/ConnectAPI";
-import Contact from "./components/Contact";
 import Bots from "./components/Bots";
 import { DataProvider } from "./components/context";
 
@@ -22,7 +21,6 @@ const App = () => {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/create-bot" element={<CreateBot />} />
           <Route path="/connect" element={<ConnectAPI />} />
-          <Route path="/contact" element={<Contact />} />
           <Route path="/bots" element={<Bots />} />
         </Routes>
       </div>

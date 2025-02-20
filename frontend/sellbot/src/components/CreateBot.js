@@ -1,12 +1,10 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect,} from "react";
 import Sidebar from "./sidebar";
-import { DataContext } from "./context";
 import "../Styles/model.css"
 
 const CreateBot = () => {
   const [navOpen, setNavOpen] = useState(true);
   const [connected, setConnected] = useState(false);
-  const { data } = useContext(DataContext);  
   const [tradingPair, setTradingPair] = useState("");
   const [minOrderValue, setMinOrderValue] = useState("");
   const [minInterval, setMinInterval] = useState("");
@@ -14,7 +12,6 @@ const CreateBot = () => {
   const [minOrderPercentage, setMinOrderPercentage] = useState("");
   const [maxOrderPercentage, setMaxOrderPercentage] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
-  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const apiKey = localStorage.getItem("apiKey");
@@ -27,16 +24,10 @@ const CreateBot = () => {
     }
   }, []);
 
-  useEffect(() => {
-    if (data && data.trading_pairs) {
-      setLoading(false); 
-    }
-    console.log("Trading Pair Data:", data); 
-  }, [data]); 
-
+  
   const addBot = () => {
     if (!tradingPair) {
-      alert("Please select a trading pair.");
+      alert("Please enter a trading pair.");
       return;
     }
     if (!minOrderValue) {
@@ -113,23 +104,13 @@ const CreateBot = () => {
           <>
             <h2 className="title">Create Bot</h2>
             <div className="form">
-              <select
+            <input
                 className="input"
-                value={tradingPair || ""}
+                type="alphabet"
+                placeholder="Trading Pair"
+                value={tradingPair}
                 onChange={(e) => setTradingPair(e.target.value)}
-                disabled={loading}
-              >
-                <option value="">Select a Trading Pair</option>
-                {loading ? (
-                  <option>Loading...</option>
-                ) : (
-                  data.trading_pairs.map((pair, index) => (
-                    <option key={index} value={pair}>
-                      {pair}
-                    </option>
-                  ))
-                )}
-              </select>
+              />
               <input
                 className="input"
                 type="number"

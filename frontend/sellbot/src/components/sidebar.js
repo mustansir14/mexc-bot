@@ -25,7 +25,6 @@ const Sidebar = ({ navOpen, setNavOpen }) => {
           <li><Link to="/bots">My Bots</Link></li>
           <li><Link to="/create-bot">Create Bot</Link></li>
           <li><Link to="/connect">Connect API</Link></li>
-          <li><Link to="/contact">Contact</Link></li>
         </ul>
       </div>
     </div>
